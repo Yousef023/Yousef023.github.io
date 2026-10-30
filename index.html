@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#054239">
+  <meta name="description" content="Yusuf Hac Yusuf | Bilgisayar Mühendisliği öğrencisi. Yazılım geliştirme, web teknolojileri ve projeler.">
+  <title>Yusuf Hac Yusuf | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --forest:#054239; --forest-light:#428177; --forest-deep:#002623;
+      --wheat:#b9a779; --wheat-light:#edebe0; --umber:#6b1f2a;
+      --charcoal:#161616; --text:#20332d; --muted:#6e746e;
+      --line:#d8d9cf; --paper:#fbfaf6; --white:#fff;
+      --shadow:0 18px 50px rgba(0,38,35,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:95px}
+    body{margin:0;background:var(--paper);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit;cursor:pointer}
+    button:focus-visible,a:focus-visible{outline:3px solid var(--wheat);outline-offset:4px}
+    ::selection{background:var(--wheat);color:var(--forest-deep)}
+    .container{width:min(1160px,calc(100% - 52px));margin-inline:auto}
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(251,250,246,.95);border-bottom:1px solid rgba(5,66,57,.09);backdrop-filter:blur(16px)}
+    .nav-wrap{min-height:80px;display:flex;justify-content:space-between;align-items:center;gap:30px}
+    .brand{display:inline-flex;align-items:center;gap:12px;font-family:Manrope,sans-serif;font-weight:800;font-size:17px;letter-spacing:-.6px;white-space:nowrap}
+    .brand-mark{display:grid;place-items:center;width:43px;height:43px;background:var(--forest);border-radius:12px;color:var(--wheat-light);font-weight:800;font-size:14px;letter-spacing:-1px}
+    .brand i{font-style:normal;color:var(--forest-light)}
+    .nav-links{display:flex;align-items:center;gap:25px;margin-left:auto}
+    .nav-links a{font-size:13px;font-weight:700;color:#415b53;transition:color .2s}
+    .nav-links a:hover{color:var(--forest-light)}
+    .nav-actions{display:flex;align-items:center;gap:13px}
+    .language{display:flex;padding:4px;background:#edece5;border:1px solid #dddcd2;border-radius:999px}
+    .language button{border:0;background:transparent;color:#68756f;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:800;line-height:1.3}
+    .language button.active{background:var(--forest);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.13)}
+    .menu-button{display:none;background:none;border:0;color:var(--forest);font-size:24px;padding:6px}
+    .hero{position:relative;overflow:hidden;background:var(--forest-deep);color:var(--white);isolation:isolate}
+    .hero:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 85% 25%,rgba(66,129,119,.33),transparent 37%),radial-gradient(circle at 3% 95%,rgba(185,167,121,.15),transparent 30%);z-index:-1}
+    .hero:after{content:'';position:absolute;width:470px;height:470px;border:1px solid rgba(185,167,121,.18);border-radius:50%;right:-210px;top:-220px;box-shadow:0 0 0 80px rgba(185,167,121,.025),0 0 0 160px rgba(185,167,121,.025);pointer-events:none}
+    .hero-layout{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:54px;min-height:620px;padding-block:90px 108px}
+    .eyebrow{display:inline-flex;align-items:center;gap:11px;color:var(--wheat);text-transform:uppercase;font-size:12px;font-weight:800;letter-spacing:2px}
+    .eyebrow:before{content:'';display:block;width:22px;height:2px;background:var(--wheat)}
+    .hero h1{font-family:Manrope,sans-serif;font-size:clamp(45px,5.2vw,79px);line-height:1.06;letter-spacing:-3px;margin:24px 0 18px;font-weight:800}
+    .hero h1 span{color:var(--wheat)}
+    .role{color:#d4e8e1;font-size:clamp(17px,1.9vw,23px);font-weight:600;margin:0}
+    .hero-desc{font-size:16px;line-height:1.95;color:#bdd3cb;max-width:520px;margin:23px 0 33px}
+    .hero-buttons{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:49px;border-radius:8px;padding:12px 20px;font-size:14px;font-weight:800;transition:transform .2s,background .2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-gold{background:var(--wheat);color:var(--forest-deep)}
+    .btn-gold:hover{background:#cab98f}
+    .btn-outline{border:1px solid rgba(237,235,224,.38);color:#fff;background:rgba(255,255,255,.02)}
+    .btn-outline:hover{background:rgba(255,255,255,.08)}
+    .hero-social{margin-top:36px;display:flex;align-items:center;gap:18px}
+    .hero-social a{font-size:13px;color:#d1e0dc;border-bottom:1px solid rgba(209,224,220,.35);padding-bottom:4px;transition:color .2s}
+    .hero-social a:hover{color:var(--wheat)}
+    .hero-art{min-width:0;position:relative;max-width:470px;width:100%;justify-self:center}
+    .identity-card{position:relative;min-height:460px;border:2px solid rgba(185,167,121,.66);border-radius:23px;background:var(--forest-deep);padding:27px;overflow:hidden;isolation:isolate;box-shadow:0 35px 75px rgba(0,0,0,.24)}
+    .portrait-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 27%;z-index:-2;display:block}
+    .identity-card:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,38,35,.42) 0%,transparent 31%,rgba(0,38,35,.01) 45%,rgba(0,27,23,.89) 100%);z-index:-1;pointer-events:none}
+    .photo-corner{position:absolute;z-index:2;top:79px;right:20px;width:30px;height:30px;border-right:2px solid var(--wheat);border-top:2px solid var(--wheat);opacity:.85}
+    .photo-corner.bottom{top:auto;right:auto;left:20px;bottom:105px;transform:rotate(180deg)}
+    .identity-card:before{content:'';position:absolute;inset:9px;border:1px solid rgba(237,235,224,.27);border-radius:15px;pointer-events:none;z-index:1}
+    .card-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:10px;color:#f3f1e8;font-size:10px;letter-spacing:1px;font-weight:800;text-shadow:0 2px 6px rgba(0,0,0,.65)}
+    .card-top>span:first-child{padding:9px 12px;border-radius:999px;background:rgba(0,38,35,.57);border:1px solid rgba(237,235,224,.27);backdrop-filter:blur(8px)}
+    .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#b9a779;box-shadow:0 0 0 5px rgba(185,167,121,.14);margin-right:10px}
+    .initials{font-family:Manrope,sans-serif;color:var(--wheat-light);font-weight:800;font-size:clamp(88px,12vw,154px);letter-spacing:-15px;line-height:1.1;text-align:center;margin:73px 0 41px;position:relative;text-shadow:0 12px 26px rgba(0,0,0,.15)}
+    .card-bottom{position:absolute;z-index:2;bottom:26px;left:30px;right:30px;border-top:1px solid rgba(226,226,210,.38);padding-top:18px;display:flex;justify-content:space-between;align-items:end;gap:12px}
+    .card-bottom strong{display:block;font-size:19px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+    .card-bottom small{display:block;color:#e3e6dc;margin-top:6px;font-size:12px;text-shadow:0 2px 8px rgba(0,0,0,.65)}
+    .chip-orbit{padding:8px 12px;border-radius:40px;background:rgba(0,38,35,.73);color:#eadfc7;border:1px solid rgba(185,167,121,.7);font-size:11px;font-weight:800}
+    .floating-code{position:absolute;right:-19px;bottom:-17px;padding:13px 17px;background:var(--paper);border-radius:12px;color:var(--forest);box-shadow:0 14px 45px rgba(0,0,0,.24);font:700 12px/1.7 monospace;transform:rotate(-5deg)}
+    .floating-code span{color:var(--umber)}
+    .section{padding:104px 0}
+    .section-tint{background:var(--wheat-light)}
+    .section-head{margin-bottom:42px}
+    .section-number{font-size:12px;letter-spacing:2px;font-weight:900;color:var(--forest-light);display:block;margin-bottom:13px}
+    h2{font-family:Manrope,sans-serif;font-size:clamp(30px,3.1vw,43px);font-weight:800;letter-spacing:-1.4px;line-height:1.2;margin:0 0 17px;color:var(--forest-deep)}
+    .section-head p{margin:0;color:var(--muted);line-height:1.9;font-size:15px;max-width:640px}
+    .about-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:90px;align-items:center}
+    .about-copy{font-size:17px;line-height:2;color:#53645d;margin:20px 0 0;max-width:670px}
+    .detail-stack{display:grid;gap:14px}
+    .detail{background:#fff;border:1px solid #e2e2d9;border-radius:13px;padding:22px 24px;display:flex;gap:16px;align-items:center}
+    .detail-icon{width:43px;height:43px;flex:0 0 43px;border-radius:11px;display:grid;place-items:center;background:#edf3ee;color:var(--forest);font-size:19px}
+    .detail small{color:#77817c;display:block;font-size:12px;margin-bottom:6px}
+    .detail strong{font-size:15px;color:var(--forest-deep)}
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .skill-card{background:#fff;border:1px solid #dfdfd6;border-radius:15px;padding:26px 23px;display:flex;align-items:center;gap:18px;transition:transform .25s,box-shadow .25s,border-color .25s}
+    .skill-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#b5c6bc}
+    .skill-symbol{width:54px;height:54px;background:#eef3ef;color:var(--forest);border-radius:13px;display:grid;place-items:center;font:800 21px Manrope,sans-serif;flex:0 0 54px}
+    .skill-card strong{display:block;color:var(--forest-deep);font-size:16px}
+    .skill-card small{display:block;color:#8c958e;margin-top:4px;font-size:12px}
+    .project-card{display:grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:20px;border:1px solid #e0e2d8;overflow:hidden;box-shadow:var(--shadow)}
+    .project-visual{min-height:375px;background:linear-gradient(145deg,#054239,#002623);padding:36px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .project-visual:before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(185,167,121,.21) 1px,transparent 1px);background-size:20px 20px;mask-image:linear-gradient(to top,transparent,black)}
+    .mock-window{position:relative;width:min(360px,100%);background:#fafaf5;border-radius:13px;box-shadow:0 21px 58px rgba(0,0,0,.25);overflow:hidden;transform:rotate(-3deg)}
+    .window-bar{height:36px;background:#ebece4;border-bottom:1px solid #dfe1d9;display:flex;align-items:center;gap:5px;padding:0 14px}
+    .window-bar i{display:block;width:7px;height:7px;border-radius:50%;background:#b9a779}
+    .window-bar i:nth-child(2){background:#428177}.window-bar i:nth-child(3){background:#6b1f2a}
+    .window-content{padding:21px}
+    .mock-brand{font-size:12px;font-weight:900;color:#054239;margin-bottom:20px;display:flex;justify-content:space-between}
+    .mock-brand span{color:#a3a99b;font-weight:500}
+    .fake-input{padding:14px 12px;border:1px solid #e1e5da;border-radius:7px;background:white;color:#50695f;font-size:10px;display:flex;justify-content:space-between;margin-bottom:10px}
+    .fake-input b{color:#054239}
+    .fake-button{height:29px;border-radius:5px;background:#054239;margin-top:15px}
+    .window-route{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:800;color:#054239;margin:12px 0}
+    .window-route span{width:60px;border-top:1px dashed #b9a779;position:relative}.window-route span:after{content:'›';position:absolute;right:-4px;top:-11px;color:#b9a779;font-size:17px}
+    .project-info{padding:49px 46px;align-self:center}
+    .pill{display:inline-flex;padding:7px 12px;color:var(--umber);background:#f3e9e9;border-radius:30px;font-size:11px;letter-spacing:.4px;font-weight:900}
+    .project-info h3{font-family:Manrope,sans-serif;font-size:29px;line-height:1.3;letter-spacing:-1px;color:var(--forest-deep);margin:19px 0}
+    .project-info p{color:var(--muted);line-height:1.85;margin:0 0 22px;font-size:15px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 29px}
+    .tags span{background:#eff3ef;border:1px solid #e1e7e2;padding:7px 10px;color:#456358;border-radius:6px;font-size:12px;font-weight:700}
+    .text-link{font-weight:900;font-size:14px;color:var(--forest);display:inline-flex;gap:10px;align-items:center;border-bottom:2px solid var(--wheat);padding-bottom:7px}
+    .education-card{display:flex;align-items:center;gap:28px;background:#fff;border:1px solid #e0e3d9;border-radius:18px;padding:33px 38px;box-shadow:var(--shadow)}
+    .education-badge{display:grid;place-items:center;flex:0 0 86px;height:86px;background:var(--forest);color:var(--wheat-light);border-radius:19px;font:800 32px Manrope,sans-serif}
+    .education-card small{font-size:12px;color:var(--forest-light);letter-spacing:1.3px;font-weight:900;text-transform:uppercase}
+    .education-card h3{font-size:23px;font-family:Manrope,sans-serif;color:var(--forest-deep);letter-spacing:-.6px;margin:7px 0}
+    .education-card p{font-size:15px;color:#66756a;margin:4px 0}
+    .contact-section{padding:100px 0;background:var(--forest);color:#fff;position:relative;overflow:hidden}
+    .contact-section:after{content:'';position:absolute;width:510px;height:510px;border:1px solid rgba(185,167,121,.20);border-radius:50%;right:-210px;top:-210px;pointer-events:none}
+    .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;position:relative;z-index:1}
+    .contact-section h2{color:#fff;margin-bottom:20px}
+    .contact-section .section-number{color:var(--wheat)}
+    .contact-desc{color:#d0e0d9;font-size:16px;line-height:1.9}
+    .contact-links{display:grid;gap:14px}
+    .contact-link{padding:20px 22px;border:1px solid rgba(237,235,224,.23);border-radius:12px;background:rgba(0,38,35,.24);display:flex;justify-content:space-between;align-items:center;gap:14px;transition:background .2s}
+    .contact-link:hover{background:rgba(0,38,35,.48)}
+    .contact-link small{display:block;color:var(--wheat);font-size:11px;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:800}
+    .contact-link strong{font-size:15px;overflow-wrap:anywhere}
+    .contact-link .arrow{color:var(--wheat);font-size:20px;flex-shrink:0}
+    footer{background:var(--forest-deep);color:#a3b9b0;padding:27px 0}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:12px}
+    footer strong{color:#eef1e9}
+    @media(max-width:960px){
+      .nav-links{gap:13px}.nav-links a{font-size:12px}
+      .hero-layout{gap:28px}.identity-card{min-height:405px;padding:24px}
+      .about-layout{gap:45px}.skills-grid{grid-template-columns:repeat(2,1fr)}
+      .project-info{padding:35px 30px}.contact-layout{gap:45px}
+    }
+    @media(max-width:720px){
+      .container{width:min(100% - 34px,540px)}
+      .nav-wrap{min-height:68px;gap:10px}.brand{font-size:15px}.brand-mark{width:38px;height:38px}
+      .menu-button{display:block}
+      .nav-links{display:none;position:absolute;left:0;right:0;top:68px;background:var(--paper);padding:18px 24px 25px;box-shadow:0 20px 22px rgba(0,0,0,.08);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:19px}
+      .nav-links.open{display:flex}.nav-links a{font-size:14px}
+      .language button{padding:6px 10px}
+      .hero-layout{grid-template-columns:1fr;min-height:auto;padding-block:69px 80px;gap:54px}
+      .hero h1{font-size:clamp(46px,11vw,67px);letter-spacing:-2.6px}.hero-desc{font-size:15px}
+      .hero-art{max-width:390px}.identity-card{min-height:405px}.card-bottom{left:23px;right:23px;bottom:25px}.card-bottom strong{font-size:16px}.card-top{font-size:9px}
+      .floating-code{right:0;bottom:-18px}
+      .section{padding:77px 0}.section-head{margin-bottom:31px}
+      .about-layout,.project-card,.contact-layout{grid-template-columns:1fr;gap:30px}
+      .skills-grid{grid-template-columns:repeat(2,1fr);gap:11px}
+      .skill-card{padding:16px 13px;gap:10px}.skill-symbol{width:41px;height:41px;flex-basis:41px;font-size:16px}.skill-card strong{font-size:14px}
+      .project-visual{min-height:315px;padding:33px}.project-info{padding:32px 25px 38px}
+      .education-card{align-items:flex-start;padding:24px;gap:17px}.education-badge{flex-basis:57px;height:57px;font-size:22px}.education-card h3{font-size:18px}
+      .contact-section{padding:76px 0}.contact-layout{gap:26px}
+      .footer-inner{flex-direction:column;text-align:center;gap:9px}
+    }
+    @media(max-width:380px){
+      .container{width:calc(100% - 26px)}.brand{font-size:13px}.brand-mark{width:33px;height:33px}
+      .hero h1{font-size:43px}.hero-buttons .btn{padding-inline:12px;font-size:12px}
+      .skill-card{gap:8px}.skill-symbol{width:35px;height:35px;flex-basis:35px}
+      .contact-link strong{font-size:12px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Yusuf Hac Yusuf homepage"><span class="brand-mark">YH</span><span>Yusuf Hac <i>Yusuf.</i></span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#home" data-i18n="navHome">Ana Sayfa</a>
+        <a href="#about" data-i18n="navAbout">Hakkımda</a>
+        <a href="#skills" data-i18n="navSkills">Yetenekler</a>
+        <a href="#projects" data-i18n="navProjects">Projeler</a>
+        <a href="#education" data-i18n="navEducation">Eğitim</a>
+        <a href="#contact" data-i18n="navContact">İletişim</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="language" role="group" aria-label="Language selection">
+          <button type="button" id="trBtn" class="active" lang="tr" aria-pressed="true">TR</button>
+          <button type="button" id="enBtn" lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="menu-button" id="menuButton" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-layout">
+        <div>
+          <span class="eyebrow" data-i18n="heroBadge">PORTFOLYO · 2026</span>
+          <h1>Yusuf Hac<br><span>Yusuf.</span></h1>
+          <p class="role" data-i18n="heroRole">Bilgisayar Mühendisliği Öğrencisi</p>
+          <p class="hero-desc" data-i18n="heroDesc">Merhaba! Ben Yusuf. Yazılım geliştirme, web teknolojileri ve işlevsel dijital deneyimler tasarlamakla ilgilenen 4. sınıf bilgisayar mühendisliği öğrencisiyim.</p>
+          <div class="hero-buttons">
+            <a class="btn btn-gold" href="#projects"><span data-i18n="heroProjects">Projelerimi İncele</span><span aria-hidden="true">↗</span></a>
+            <a class="btn btn-outline" href="#contact" data-i18n="heroContact">İletişime Geç</a>
+          </div>
+          <div class="hero-social">
+            <a href="https://github.com/Yousef023" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a href="mailto:Yousef-mohanad2013@outlook.com">Email ↗</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Yusuf Hac Yusuf portrait">
+          <div class="identity-card">
+            <img class="portrait-photo" src="profile.jpg" alt="Yusuf Hac Yusuf" width="640" height="640" fetchpriority="high">
+            <div class="photo-corner" aria-hidden="true"></div><div class="photo-corner bottom" aria-hidden="true"></div>
+            <div class="card-top"><span><span class="status-dot"></span><span data-i18n="idStudent">4. SINIF · NEÜ</span></span><span>YHY / 01</span></div>
+            <div class="card-bottom"><div><strong>Yusuf Hac Yusuf</strong><small>Necmettin Erbakan Üniversitesi</small></div><span class="chip-orbit">&lt;/&gt;</span></div>
+          </div>
+          <div class="floating-code" aria-hidden="true">const <span>future</span> = "build";</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-layout">
+        <div>
+          <span class="section-number">01 / <span data-i18n="aboutLabel">HAKKIMDA</span></span>
+          <h2 data-i18n="aboutTitle">Fikirleri koda dönüştürmek.</h2>
+          <p class="about-copy" data-i18n="aboutText">Necmettin Erbakan Üniversitesi'nde 4. sınıf Bilgisayar Mühendisliği öğrencisiyim. Web geliştirme ve programlama alanlarında kendimi geliştiriyor, öğrendiklerimi gerçek projelere dönüştürmeye odaklanıyorum. Sade tasarımı, temiz kodu ve kullanıcı deneyimini önemsiyorum.</p>
+        </div>
+        <div class="detail-stack">
+          <div class="detail"><span class="detail-icon" aria-hidden="true">⌘</span><div><small data-i18n="aboutFocusLabel">Odak Alanım</small><strong data-i18n="aboutFocus">Yazılım ve Web Geliştirme</strong></div></div>
+          <div class="detail"><span class="detail-icon" aria-hidden="true">◎</span><div><small data-i18n="aboutLocationLabel">Konum</small><strong>Konya, Türkiye</strong></div></div>
+          <div class="detail"><span class="detail-icon" aria-hidden="true">✦</span><div><small data-i18n="aboutLanguagesLabel">Site Dilleri</small><strong>Türkçe · English</strong></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="skills">
+      <div class="container">
+        <div class="section-head"><span class="section-number">02 / <span data-i18n="skillsLabel">YETENEKLER</span></span><h2 data-i18n="skillsTitle">Kullandığım teknolojiler.</h2><p data-i18n="skillsText">Üzerinde çalıştığım ve projelerimde kullandığım programlama dilleri ve web teknolojileri.</p></div>
+        <div class="skills-grid">
+          <div class="skill-card"><span class="skill-symbol">&lt;&gt;</span><div><strong>HTML</strong><small data-i18n="skillWeb">Web Geliştirme</small></div></div>
+          <div class="skill-card"><span class="skill-symbol">#</span><div><strong>CSS</strong><small data-i18n="skillDesign">Arayüz Tasarımı</small></div></div>
+          <div class="skill-card"><span class="skill-symbol">JS</span><div><strong>JavaScript</strong><small data-i18n="skillInteractive">Etkileşimli Web</small></div></div>
+          <div class="skill-card"><span class="skill-symbol">Py</span><div><strong>Python</strong><small data-i18n="skillProgramming">Programlama</small></div></div>
+          <div class="skill-card"><span class="skill-symbol">C++</span><div><strong>C++</strong><small data-i18n="skillAlgorithms">Algoritmalar</small></div></div>
+          <div class="skill-card"><span class="skill-symbol">DB</span><div><strong>SQL</strong><small data-i18n="skillDatabase">Veritabanları</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head"><span class="section-number">03 / <span data-i18n="projectsLabel">PROJELER</span></span><h2 data-i18n="projectsTitle">Üzerinde çalıştığım projeler.</h2><p data-i18n="projectsText">Geliştirme sürecinde öğrendiklerimi uyguladığım çalışmalardan biri.</p></div>
+        <article class="project-card">
+          <div class="project-visual" aria-hidden="true">
+            <div class="mock-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="window-content"><div class="mock-brand">TICKET / BOOKING <span>● ● ●</span></div><div class="window-route"><div>Türkiye</div><span></span><div>Suriye</div></div><div class="fake-input"><b data-i18n="mockFrom">Nereden</b><span>Türkiye</span></div><div class="fake-input"><b data-i18n="mockTo">Nereye</b><span>Suriye</span></div><div class="fake-button"></div></div></div>
+          </div>
+          <div class="project-info">
+            <span class="pill" data-i18n="projectType">WEB UYGULAMASI</span>
+            <h3 data-i18n="projectTitle">Otobüs Bileti Rezervasyon Sistemi</h3>
+            <p data-i18n="projectDesc">Türkiye ve Suriye arasında otobüs bileti rezervasyonuna yönelik bir web projesi. Kullanıcı girişi, bilet seçenekleri ve koltuk seçimi gibi özellikler içerir.</p>
+            <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span></div>
+            <a href="https://github.com/Yousef023/ticket-booking-system" target="_blank" rel="noopener noreferrer" class="text-link"><span data-i18n="projectLink">GitHub'da Görüntüle</span>↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="education">
+      <div class="container">
+        <div class="section-head"><span class="section-number">04 / <span data-i18n="educationLabel">EĞİTİM</span></span><h2 data-i18n="educationTitle">Akademik yolculuğum.</h2></div>
+        <div class="education-card"><div class="education-badge" aria-hidden="true">NEÜ</div><div><small data-i18n="educationType">ÜNİVERSİTE EĞİTİMİ</small><h3>Necmettin Erbakan Üniversitesi</h3><p data-i18n="educationDegree">Bilgisayar Mühendisliği · 4. Sınıf Öğrencisi</p><p>Konya, Türkiye</p></div></div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container contact-layout">
+        <div><span class="section-number">05 / <span data-i18n="contactLabel">İLETİŞİM</span></span><h2 data-i18n="contactTitle">Birlikte bir şeyler geliştirelim.</h2><p class="contact-desc" data-i18n="contactText">Projeler, fikirler veya iş birliği fırsatları hakkında iletişime geçmekten çekinmeyin.</p></div>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:Yousef-mohanad2013@outlook.com"><span><small data-i18n="contactEmail">E-POSTA</small><strong>Yousef-mohanad2013@outlook.com</strong></span><span class="arrow">↗</span></a>
+          <a class="contact-link" href="tel:+905362345945"><span><small data-i18n="contactPhone">TELEFON</small><strong>+90 536 234 59 45</strong></span><span class="arrow">↗</span></a>
+          <a class="contact-link" href="https://github.com/Yousef023" target="_blank" rel="noopener noreferrer"><span><small>GITHUB</small><strong>github.com/Yousef023</strong></span><span class="arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><span>© <span id="year"></span> <strong>Yusuf Hac Yusuf.</strong> <span data-i18n="footerRights">Tüm hakları saklıdır.</span></span><span data-i18n="footerMade">Designed with purpose · Built with code</span></div></footer>
+
+  <script>
+    const translations = {
+      tr: {
+        navHome:'Ana Sayfa',navAbout:'Hakkımda',navSkills:'Yetenekler',navProjects:'Projeler',navEducation:'Eğitim',navContact:'İletişim',
+        heroBadge:'PORTFOLYO · 2026',heroRole:'Bilgisayar Mühendisliği Öğrencisi',heroDesc:'Merhaba! Ben Yusuf. Yazılım geliştirme, web teknolojileri ve işlevsel dijital deneyimler tasarlamakla ilgilenen 4. sınıf bilgisayar mühendisliği öğrencisiyim.',heroProjects:'Projelerimi İncele',heroContact:'İletişime Geç',idStudent:'4. SINIF · NEÜ',
+        aboutLabel:'HAKKIMDA',aboutTitle:'Fikirleri koda dönüştürmek.',aboutText:"Necmettin Erbakan Üniversitesi'nde 4. sınıf Bilgisayar Mühendisliği öğrencisiyim. Web geliştirme ve programlama alanlarında kendimi geliştiriyor, öğrendiklerimi gerçek projelere dönüştürmeye odaklanıyorum. Sade tasarımı, temiz kodu ve kullanıcı deneyimini önemsiyorum.",aboutFocusLabel:'Odak Alanım',aboutFocus:'Yazılım ve Web Geliştirme',aboutLocationLabel:'Konum',aboutLanguagesLabel:'Site Dilleri',
+        skillsLabel:'YETENEKLER',skillsTitle:'Kullandığım teknolojiler.',skillsText:'Üzerinde çalıştığım ve projelerimde kullandığım programlama dilleri ve web teknolojileri.',skillWeb:'Web Geliştirme',skillDesign:'Arayüz Tasarımı',skillInteractive:'Etkileşimli Web',skillProgramming:'Programlama',skillAlgorithms:'Algoritmalar',skillDatabase:'Veritabanları',
+        projectsLabel:'PROJELER',projectsTitle:'Üzerinde çalıştığım projeler.',projectsText:'Geliştirme sürecinde öğrendiklerimi uyguladığım çalışmalardan biri.',projectType:'WEB UYGULAMASI',projectTitle:'Otobüs Bileti Rezervasyon Sistemi',projectDesc:'Türkiye ve Suriye arasında otobüs bileti rezervasyonuna yönelik bir web projesi. Kullanıcı girişi, bilet seçenekleri ve koltuk seçimi gibi özellikler içerir.',projectLink:"GitHub'da Görüntüle",mockFrom:'Nereden',mockTo:'Nereye',
+        educationLabel:'EĞİTİM',educationTitle:'Akademik yolculuğum.',educationType:'ÜNİVERSİTE EĞİTİMİ',educationDegree:'Bilgisayar Mühendisliği · 4. Sınıf Öğrencisi',
+        contactLabel:'İLETİŞİM',contactTitle:'Birlikte bir şeyler geliştirelim.',contactText:'Projeler, fikirler veya iş birliği fırsatları hakkında iletişime geçmekten çekinmeyin.',contactEmail:'E-POSTA',contactPhone:'TELEFON',footerRights:'Tüm hakları saklıdır.',footerMade:'Özenle tasarlandı · Kodla hayata geçirildi.'
+      },
+      en: {
+        navHome:'Home',navAbout:'About',navSkills:'Skills',navProjects:'Projects',navEducation:'Education',navContact:'Contact',
+        heroBadge:'PORTFOLIO · 2026',heroRole:'Computer Engineering Student',heroDesc:'Hello! I am Yusuf, a fourth-year Computer Engineering student interested in software development, web technologies, and creating useful digital experiences.',heroProjects:'Explore My Work',heroContact:'Get in Touch',idStudent:'4TH YEAR · NEU',
+        aboutLabel:'ABOUT ME',aboutTitle:'Turning ideas into code.',aboutText:'I am a fourth-year Computer Engineering student at Necmettin Erbakan University. I am developing my skills in web development and programming, with a focus on transforming what I learn into real projects. I value thoughtful design, clean code, and user experience.',aboutFocusLabel:'My Focus',aboutFocus:'Software & Web Development',aboutLocationLabel:'Location',aboutLanguagesLabel:'Website Languages',
+        skillsLabel:'SKILLS',skillsTitle:'Technologies I work with.',skillsText:'Programming languages and web technologies I am learning and using in my projects.',skillWeb:'Web Development',skillDesign:'Interface Design',skillInteractive:'Interactive Web',skillProgramming:'Programming',skillAlgorithms:'Algorithms',skillDatabase:'Databases',
+        projectsLabel:'PROJECTS',projectsTitle:'Projects I have worked on.',projectsText:'A project where I apply what I have learned during development.',projectType:'WEB APPLICATION',projectTitle:'Bus Ticket Booking System',projectDesc:'A web project for booking bus tickets between Türkiye and Syria, featuring user login, ticket options, and seat selection.',projectLink:'View on GitHub',mockFrom:'From',mockTo:'To',
+        educationLabel:'EDUCATION',educationTitle:'My academic journey.',educationType:'UNIVERSITY EDUCATION',educationDegree:'Computer Engineering · 4th-Year Student',
+        contactLabel:'CONTACT',contactTitle:'Let’s build something together.',contactText:'Feel free to reach out to discuss projects, ideas, or opportunities to collaborate.',contactEmail:'EMAIL',contactPhone:'PHONE',footerRights:'All rights reserved.',footerMade:'Designed with purpose · Built with code.'
+      }
+    };
+    const trBtn=document.getElementById('trBtn');
+    const enBtn=document.getElementById('enBtn');
+    function setLanguage(lang){
+      if(!translations[lang])return;
+      document.documentElement.lang=lang;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const value=translations[lang][el.dataset.i18n];
+        if(value!==undefined)el.textContent=value;
+      });
+      trBtn.classList.toggle('active',lang==='tr');
+      enBtn.classList.toggle('active',lang==='en');
+      trBtn.setAttribute('aria-pressed',String(lang==='tr'));
+      enBtn.setAttribute('aria-pressed',String(lang==='en'));
+      document.title=`Yusuf Hac Yusuf | ${lang==='tr'?'Portfolyo':'Portfolio'}`;
+      const description=document.querySelector('meta[name="description"]');
+      if(description)description.content=lang==='tr'?'Yusuf Hac Yusuf | Bilgisayar Mühendisliği öğrencisi. Yazılım geliştirme, web teknolojileri ve projeler.':'Yusuf Hac Yusuf | Computer Engineering student. Software development, web technologies, and projects.';
+      try{localStorage.setItem('portfolioLanguage',lang)}catch(e){}
+    }
+    trBtn.addEventListener('click',()=>setLanguage('tr'));
+    enBtn.addEventListener('click',()=>setLanguage('en'));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const menuButton=document.getElementById('menuButton');
+    const navLinks=document.getElementById('navLinks');
+    menuButton.addEventListener('click',()=>{
+      const isOpen=navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded',String(isOpen));
+      menuButton.textContent=isOpen?'✕':'☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+      navLinks.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.textContent='☰';
+    }));
+    let storedLang='tr';
+    try{storedLang=localStorage.getItem('portfolioLanguage')||'tr'}catch(e){}
+    setLanguage(translations[storedLang]?storedLang:'tr');
+  </script>
+</body>
+</html>
